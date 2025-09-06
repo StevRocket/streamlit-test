@@ -1,5 +1,5 @@
 import streamlit as st
 
-st.title('Test Streamlit for Web App - Private Repo')
+st.title('Test streamlit with private input')
 
 st.write('Hello world!')
