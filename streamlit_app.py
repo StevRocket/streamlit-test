@@ -38,4 +38,3 @@ try:
     st.dataframe(df)  # display the dataframe
 except Exception as e:
     st.error(f"Error loading CSV: {e}")
-
