@@ -4,12 +4,11 @@ import pandas as pd
 import streamlit as st
 
 # -------- Settings from Streamlit secrets --------
+TOKEN  = st.secrets["GITHUB_TOKEN"]
 OWNER  = st.secrets["DATA_OWNER"]
 REPO   = st.secrets["DATA_REPO"]
 BRANCH = st.secrets.get("DATA_BRANCH", "main")
 PREFIX = st.secrets.get("DATA_PREFIX", "").strip("/")
-TOKEN  = st.secrets["GITHUB_TOKEN"]
-
 RAW_BASE = "https://raw.githubusercontent.com"
 
 def _build_raw_url(path_in_repo: str) -> str:
