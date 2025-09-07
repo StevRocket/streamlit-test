@@ -32,7 +32,7 @@ def load_private_csv(path_in_repo: str) -> pd.DataFrame:
 st.title("Private CSV Loader")
 
 try:
-    df = load_private_csv("c_map.csv")  # 👈 change filename as needed
+    df = load_private_csv("course_map.csv")  # 👈 change filename as needed
     st.success("CSV file loaded successfully ✅")
     st.dataframe(df)  # display the dataframe
 except Exception as e:
