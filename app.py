@@ -7,18 +7,15 @@ st.title("🌐 CSV from URL Viewer")
 st.caption("Enter a URL to a CSV file and display it interactively.")
 
 # Input field for CSV URL
-csv_url = st.text_input("CSV URL", placeholder="https://raw.githubusercontent.com/StevRocket/streamlit-test/refs/heads/master/course_map.csv")
-
-# Options
-sep = st.selectbox("Delimiter", options=[",", ";", "\t", "|"], index=0)
-encoding = st.selectbox("Encoding", options=["utf-8", "utf-8-sig", "latin-1", "cp1252"], index=0)
-header_row = st.checkbox("First row is header", value=True)
+csv_url = st.text_input(
+    "CSV URL", 
+    placeholder="https://raw.githubusercontent.com/StevRocket/streamlit-test/refs/heads/master/course_map.csv"
+)
 
 # Load CSV if URL is provided
 if csv_url:
     try:
-        header = 0 if header_row else None
-        df = pd.read_csv(csv_url, sep=sep, encoding=encoding, header=header)
+        df = pd.read_csv(csv_url)
         st.success("CSV loaded successfully ✅")
 
         # Show dataset info
@@ -42,7 +39,7 @@ if csv_url:
         st.dataframe(view_df.head(max_rows), use_container_width=True)
 
         # Download filtered data
-        csv_bytes = view_df.to_csv(index=False).encode(encoding)
+        csv_bytes = view_df.to_csv(index=False).encode("utf-8")
         st.download_button(
             label="Download filtered CSV",
             data=csv_bytes,
