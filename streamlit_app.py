@@ -26,7 +26,6 @@ def load_private_csv(path_in_repo: str) -> pd.DataFrame:
     if r.status_code == 404:
         raise FileNotFoundError(f"Not found in private repo: {path_in_repo}")
     r.raise_for_status()
-    print(r)
     return pd.read_csv(io.StringIO(r.text))
 
 # -------- Streamlit App --------
