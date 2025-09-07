@@ -16,7 +16,7 @@ def _build_raw_url(path_in_repo: str) -> str:
     clean = path_in_repo.strip("/")
     if PREFIX:
         clean = f"{PREFIX}/{clean}"
-    return f"{RAW_BASE}/{OWNER}/{REPO}/refs/heads/{BRANCH}/{clean}"
+    return f"{RAW_BASE}/{OWNER}/{REPO}/refs/heads/{BRANCH}/{PREFIX}/{clean}"
 
 @st.cache_data(show_spinner=False, ttl=3600)
 def load_private_csv(path_in_repo: str) -> pd.DataFrame:
@@ -32,7 +32,7 @@ def load_private_csv(path_in_repo: str) -> pd.DataFrame:
 st.title("Private CSV Loader")
 
 try:
-    df = load_private_csv("c_map.csv")  # 👈 change filename as needed
+    df = load_private_csv("course_map.csv")  # 👈 change filename as needed
     st.success("CSV file loaded successfully ✅")
     st.dataframe(df)  # display the dataframe
 except Exception as e:
