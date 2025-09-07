@@ -36,4 +36,4 @@ try:
     st.success("CSV file loaded successfully ✅")
     st.dataframe(df)  # display the dataframe
 except Exception as e:
-    st.error(f"Error loading CSV: {e}")
+    st.error(f"Error loading CSV: {e}, {r}")
