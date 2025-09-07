@@ -10,14 +10,13 @@ REPO   = st.secrets["DATA_REPO"]
 BRANCH = st.secrets.get("DATA_BRANCH", "main")
 PREFIX = st.secrets.get("DATA_PREFIX", "").strip("/")
 RAW_BASE = "https://raw.githubusercontent.com"
-BASE = "https://github.com"
 
 def _build_raw_url(path_in_repo: str) -> str:
     """Build the raw.githubusercontent.com URL for a file in the private repo."""
     clean = path_in_repo.strip("/")
     if PREFIX:
         clean = f"{PREFIX}/{clean}"
-    return f"{BASE}/{OWNER}/{REPO}/blob/{BRANCH}/{PREFIX}/{clean}"
+    return f"{RAW_BASE}/{OWNER}/{REPO}/refs/heads/{BRANCH}/{PREFIX}/{clean}"
 
 @st.cache_data(show_spinner=False, ttl=3600)
 def load_private_csv(path_in_repo: str) -> pd.DataFrame:
