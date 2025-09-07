@@ -7,7 +7,7 @@ st.title("🌐 CSV from URL Viewer")
 st.caption("Enter a URL to a CSV file and display it interactively.")
 
 # Input field for CSV URL
-csv_url = st.text_input("CSV URL", placeholder="https://github.com/StevRocket/streamlit-test/blob/master/course_map.csv")
+csv_url = st.text_input("CSV URL", placeholder="https://raw.githubusercontent.com/StevRocket/streamlit-test/refs/heads/master/course_map.csv")
 
 # Options
 sep = st.selectbox("Delimiter", options=[",", ";", "\t", "|"], index=0)
