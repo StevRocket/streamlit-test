@@ -17,7 +17,7 @@ def _build_raw_url(path_in_repo: str) -> str:
     clean = path_in_repo.strip("/")
     if PREFIX:
         clean = f"{PREFIX}/{clean}"
-    return f"{API_BASE}/repos/{OWNER}/{REPO}/contents/{BRANCH}/{PREFIX}/{clean}"
+    return f"{RAW_BASE}/{OWNER}/{REPO}/refs/heads/{BRANCH}/{PREFIX}/{clean}"
 
 @st.cache_data(show_spinner=False, ttl=3600)
 def load_private_csv(path_in_repo: str) -> pd.DataFrame:
